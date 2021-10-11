@@ -94,7 +94,7 @@ ggplot(data = discharge, aes(x= dateTime, y = Flow_Inst)) +
   scale_color_discrete(name = "Site Name", labels = c("Santa Paula", "Ventura"))
 
 ```
-2. The best way to query multiple data sets is to concatinate them, put them into a verctor and upload them together
+2. The best way to query multiple data sets is to concatenate them, put them into a vector and upload them together
 3. It seems like they peaked around noon. 
 
 ### Assignment 2.2
