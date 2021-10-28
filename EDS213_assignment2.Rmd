@@ -66,7 +66,7 @@ plot_data <- lang_data$data %>%
   mutate(percent_english = (speak_only_english/total)) %>% 
   select(Year, SASAP.Region, city, total, speak_only_english, percent_english) %>% 
   group_by(Year) %>% 
-  summarise(av_eng_pre = mean(percent_english))
+  summarise(av_eng_pre = mean(percent_english, na.rm = TRUE))
 
 ggplot(data = plot_data, aes(x = Year, y =av_eng_pre)) +
   geom_line()
@@ -86,7 +86,8 @@ endDate_vt <- "2021-10-04"
 discharge <- readNWISuv(siteNumber = c("11118500","11113500"), 
                     parameterCd_vt, 
                     startDate_vt, 
-                    endDate_vt) %>% renameNWISColumns(discharge) #takes the names
+                    endDate_vt) %>% 
+  renameNWISColumns(discharge) #takes the names
 
 
 ggplot(data = discharge, aes(x= dateTime, y = Flow_Inst)) +
